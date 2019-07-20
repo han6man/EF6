@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorldGeoDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="City_Code" />
+          </Key>
+          <Property Name="City_Code" Type="int" Nullable="false" />
+          <Property Name="City_Coat_Of_Arms_110px_Link" Type="nvarchar" MaxLength="256" />
+          <Property Name="City_Coat_Of_Arms_110px" Type="image" />
+          <Property Name="City_Coat_Of_Arms_110px_ext" Type="nvarchar" MaxLength="5" />
+          <Property Name="City_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="City_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="City_Name_Ru" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Region_Code" Type="int" />
+          <Property Name="Lishkat_Mana_Code" Type="int" />
+          <Property Name="Regional_Council_Code" Type="int" />
+          <Property Name="Country_Code" Type="int" />
+          <Property Name="City_Link" Type="nvarchar" MaxLength="256" />
+          <Property Name="City_Link_En" Type="nvarchar" MaxLength="256" />
+          <Property Name="City_Link_Ru" Type="nvarchar" MaxLength="256" />
+          <Property Name="City_Description" Type="ntext" />
+          <Property Name="City_Description_En" Type="ntext" />
+          <Property Name="City_Description_Ru" Type="ntext" />
+          <Property Name="City_Latitude" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="City_Longitude" Type="decimal" Precision="18" Scale="8" />
+        </EntityType>
+        <EntityType Name="City_Regions">
+          <Key>
+            <PropertyRef Name="City_Region_Id" />
+          </Key>
+          <Property Name="City_Region_Id" Type="int" Nullable="false" />
+          <Property Name="City_Region_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="City_Region_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="City_Region_Name_Ru" Type="nvarchar" MaxLength="50" />
+          <Property Name="City_Code" Type="int" />
+          <Property Name="City_Region_Latitude" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="City_Region_Longitude" Type="decimal" Precision="18" Scale="8" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Country_Code" />
+          </Key>
+          <Property Name="Country_Code" Type="int" Nullable="false" />
+          <Property Name="Country_Flag_22px_Link" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Flag_Pic_22px" Type="image" />
+          <Property Name="Country_Flag_Pic_22px_ext" Type="nvarchar" MaxLength="5" />
+          <Property Name="Country_Flag_800px_Link" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Flag_Pic_800px" Type="image" />
+          <Property Name="Country_Flag_Pic_800px_ext" Type="nvarchar" MaxLength="5" />
+          <Property Name="Country_Coat_Of_Arms_110px_Link" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Coat_Of_Arms_110px" Type="image" />
+          <Property Name="Country_Coat_Of_Arms_110px_ext" Type="nvarchar" MaxLength="5" />
+          <Property Name="Country_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Name_Ru" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Full_Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Full_Name_En" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Full_Name_Ru" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Name_Source_Language" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Link" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Link_En" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Link_Ru" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Description" Type="ntext" />
+          <Property Name="Country_Description_En" Type="ntext" />
+          <Property Name="Country_Description_Ru" Type="ntext" />
+          <Property Name="Country_Capital_Constitutional_Id" Type="int" />
+          <Property Name="Country_Capital_Administrative_Id" Type="int" />
+          <Property Name="Country_Capital_Legal_Id" Type="int" />
+          <Property Name="Country_Largest_City_Population_Id" Type="int" />
+          <Property Name="Country_Largest_City_Area_Id" Type="int" />
+          <Property Name="Country_Population" Type="int" />
+          <Property Name="Country_Area" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Country_Density" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Maternal_Country_Id" Type="int" />
+          <Property Name="Country_Leader" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Leader_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Leader_Ru" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Based" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Independence_Day_From" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Independence_Day_From_En" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Independence_Day_From_Ru" Type="nvarchar" MaxLength="256" />
+          <Property Name="Country_Time_Zone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Web_Extension" Type="nvarchar" MaxLength="10" />
+          <Property Name="Country_Phone_Prefix" Type="nvarchar" MaxLength="10" />
+          <Property Name="Country_Status_Id" Type="int" />
+          <Property Name="UN_Member_Status_Id" Type="int" />
+          <Property Name="World_Region_Id" Type="int" />
+          <Property Name="Country_Latitude" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Country_Longitude" Type="decimal" Precision="18" Scale="8" />
+        </EntityType>
+        <EntityType Name="Country_Regions">
+          <Key>
+            <PropertyRef Name="Country_Region_Code" />
+          </Key>
+          <Property Name="Country_Region_Code" Type="int" Nullable="false" />
+          <Property Name="Country_Region_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Region_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Region_Name_Ru" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Code" Type="int" />
+          <Property Name="Country_Region_Latitude" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Country_Region_Longitude" Type="decimal" Precision="18" Scale="8" />
+        </EntityType>
+        <EntityType Name="Country_Statuses">
+          <Key>
+            <PropertyRef Name="Country_Status_Id" />
+          </Key>
+          <Property Name="Country_Status_Id" Type="int" Nullable="false" />
+          <Property Name="Country_Status_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Status_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country_Status_Name_Ru" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lishkot_Mana">
+          <Key>
+            <PropertyRef Name="Lishkat_Mana_Code" />
+          </Key>
+          <Property Name="Lishkat_Mana_Code" Type="int" Nullable="false" />
+          <Property Name="Lishkat_Mana_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lishkat_Mana_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lishkat_Mana_Name_Ru" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Regional_Councils">
+          <Key>
+            <PropertyRef Name="Regional_Council_Code" />
+          </Key>
+          <Property Name="Regional_Council_Code" Type="int" Nullable="false" />
+          <Property Name="Regional_Council_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Regional_Council_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Regional_Council_Name_Ru" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Streets">
+          <Key>
+            <PropertyRef Name="Street_Code" />
+          </Key>
+          <Property Name="Street_Code" Type="int" Nullable="false" />
+          <Property Name="Street_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Street_Name_Ru" Type="nvarchar" MaxLength="50" />
+          <Property Name="Street_Name_Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street_Official_Code" Type="int" Nullable="false" />
+          <Property Name="City_Code" Type="int" Nullable="false" />
+          <Property Name="Street_Latitude" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Street_Longitude" Type="decimal" Precision="18" Scale="8" />
+        </EntityType>
+        <EntityType Name="UN_Member_Statuses">
+          <Key>
+            <PropertyRef Name="UN_Member_Status_Id" />
+          </Key>
+          <Property Name="UN_Member_Status_Id" Type="int" Nullable="false" />
+          <Property Name="UN_Member_Status_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UN_Member_Status_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="UN_Member_Status_Name_Ru" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="World_Regions">
+          <Key>
+            <PropertyRef Name="World_Region_Id" />
+          </Key>
+          <Property Name="World_Region_Id" Type="int" Nullable="false" />
+          <Property Name="World_Region_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="World_Region_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="World_Region_Name_Ru" Type="nvarchar" MaxLength="50" />
+          <Property Name="World_Region_Link" Type="nvarchar" MaxLength="256" />
+          <Property Name="World_Region_Link_En" Type="nvarchar" MaxLength="256" />
+          <Property Name="World_Region_Link_Ru" Type="nvarchar" MaxLength="256" />
+          <Property Name="World_Region_Latitude" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="World_Region_Longitude" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="World_Region_Description" Type="ntext" />
+          <Property Name="World_Region_Description_En" Type="ntext" />
+          <Property Name="World_Region_Description_Ru" Type="ntext" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\EVGENY\SOURCE\REPOS\HAN6MAN\EF6\WORLDGEODATA\WORLDGEODATA.MDF.dbo.View_Cities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Cities">
+          <Key>
+            <PropertyRef Name="טבלה" />
+            <PropertyRef Name="סמל_ישוב" />
+            <PropertyRef Name="שם_ישוב" />
+          </Key>
+          <Property Name="טבלה" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="סמל_ישוב" Type="int" Nullable="false" />
+          <Property Name="שם_ישוב" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="שם_ישוב_לועזי" Type="nvarchar" MaxLength="50" />
+          <Property Name="סמל_נפה" Type="int" />
+          <Property Name="שם_נפה" Type="nvarchar" MaxLength="50" />
+          <Property Name="סמל_לשכת_מנא" Type="int" />
+          <Property Name="לשכה" Type="nvarchar" MaxLength="50" />
+          <Property Name="סמל_מועצה_איזורית" Type="int" />
+          <Property Name="שם_מועצה" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\EVGENY\SOURCE\REPOS\HAN6MAN\EF6\WORLDGEODATA\WORLDGEODATA.MDF.dbo.View_Streets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Streets">
+          <Key>
+            <PropertyRef Name="table" />
+            <PropertyRef Name="city_code" />
+            <PropertyRef Name="city_name" />
+            <PropertyRef Name="street_code" />
+            <PropertyRef Name="street_name" />
+          </Key>
+          <Property Name="table" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="city_code" Type="int" Nullable="false" />
+          <Property Name="city_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="street_code" Type="int" Nullable="false" />
+          <Property Name="street_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\EVGENY\SOURCE\REPOS\HAN6MAN\EF6\WORLDGEODATA\WORLDGEODATA.MDF.dbo.View_Streets_With_Synonyms' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Streets_With_Synonyms">
+          <Key>
+            <PropertyRef Name="City_Code" />
+            <PropertyRef Name="City_Name" />
+            <PropertyRef Name="Street_Code" />
+            <PropertyRef Name="Street_Name" />
+            <PropertyRef Name="Street_Name_Status" />
+            <PropertyRef Name="official_code" />
+          </Key>
+          <Property Name="region_code" Type="int" />
+          <Property Name="region_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="City_Code" Type="int" Nullable="false" />
+          <Property Name="City_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street_Code" Type="int" Nullable="false" />
+          <Property Name="Street_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street_Name_Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="official_code" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Country_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Country_Regions">
+          <End Role="Country_Regions" Type="Self.Country_Regions" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country_Regions">
+              <PropertyRef Name="Country_Region_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Country_Region_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Lishkot_Mana">
+          <End Role="Lishkot_Mana" Type="Self.Lishkot_Mana" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lishkot_Mana">
+              <PropertyRef Name="Lishkat_Mana_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Lishkat_Mana_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Regional_Councils">
+          <End Role="Regional_Councils" Type="Self.Regional_Councils" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional_Councils">
+              <PropertyRef Name="Regional_Council_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Regional_Council_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Regions_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="City_Regions" Type="Self.City_Regions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="City_Regions">
+              <PropertyRef Name="City_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Capital_Administrative">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Capital_Administrative_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Capital_Constitutional">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Capital_Constitutional_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Capital_Legal">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Capital_Legal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Largest_City_Area">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Largest_City_Area_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Largest_City_Population">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Largest_City_Population_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Country_Statuses">
+          <End Role="Country_Statuses" Type="Self.Country_Statuses" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country_Statuses">
+              <PropertyRef Name="Country_Status_Id" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Maternal_Country">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Countries1" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_Code" />
+            </Principal>
+            <Dependent Role="Countries1">
+              <PropertyRef Name="Maternal_Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_UN_Member_Statuses">
+          <End Role="UN_Member_Statuses" Type="Self.UN_Member_Statuses" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UN_Member_Statuses">
+              <PropertyRef Name="UN_Member_Status_Id" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="UN_Member_Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_World_Regions">
+          <End Role="World_Regions" Type="Self.World_Regions" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World_Regions">
+              <PropertyRef Name="World_Region_Id" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="World_Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_Regions_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Country_Regions" Type="Self.Country_Regions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_Code" />
+            </Principal>
+            <Dependent Role="Country_Regions">
+              <PropertyRef Name="Country_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Streets_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Streets" Type="Self.Streets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Streets">
+              <PropertyRef Name="City_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorldGeoDataModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City_Regions" EntityType="Self.City_Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country_Regions" EntityType="Self.Country_Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country_Statuses" EntityType="Self.Country_Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lishkot_Mana" EntityType="Self.Lishkot_Mana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regional_Councils" EntityType="Self.Regional_Councils" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Streets" EntityType="Self.Streets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UN_Member_Statuses" EntityType="Self.UN_Member_Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="World_Regions" EntityType="Self.World_Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Cities" EntityType="Self.View_Cities" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Cities].[טבלה] AS [טבלה], 
+    [View_Cities].[סמל_ישוב] AS [סמל_ישוב], 
+    [View_Cities].[שם_ישוב] AS [שם_ישוב], 
+    [View_Cities].[שם_ישוב_לועזי] AS [שם_ישוב_לועזי], 
+    [View_Cities].[סמל_נפה] AS [סמל_נפה], 
+    [View_Cities].[שם_נפה] AS [שם_נפה], 
+    [View_Cities].[סמל_לשכת_מנא] AS [סמל_לשכת_מנא], 
+    [View_Cities].[לשכה] AS [לשכה], 
+    [View_Cities].[סמל_מועצה_איזורית] AS [סמל_מועצה_איזורית], 
+    [View_Cities].[שם_מועצה] AS [שם_מועצה]
+    FROM [dbo].[View_Cities] AS [View_Cities]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Streets" EntityType="Self.View_Streets" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Streets].[table] AS [table], 
+    [View_Streets].[city_code] AS [city_code], 
+    [View_Streets].[city_name] AS [city_name], 
+    [View_Streets].[street_code] AS [street_code], 
+    [View_Streets].[street_name] AS [street_name]
+    FROM [dbo].[View_Streets] AS [View_Streets]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Streets_With_Synonyms" EntityType="Self.View_Streets_With_Synonyms" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Streets_With_Synonyms].[region_code] AS [region_code], 
+    [View_Streets_With_Synonyms].[region_name] AS [region_name], 
+    [View_Streets_With_Synonyms].[City_Code] AS [City_Code], 
+    [View_Streets_With_Synonyms].[City_Name] AS [City_Name], 
+    [View_Streets_With_Synonyms].[Street_Code] AS [Street_Code], 
+    [View_Streets_With_Synonyms].[Street_Name] AS [Street_Name], 
+    [View_Streets_With_Synonyms].[Street_Name_Status] AS [Street_Name_Status], 
+    [View_Streets_With_Synonyms].[official_code] AS [official_code]
+    FROM [dbo].[View_Streets_With_Synonyms] AS [View_Streets_With_Synonyms]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Country_Regions" Association="Self.FK_Cities_Country_Regions">
+            <End Role="Country_Regions" EntitySet="Country_Regions" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Lishkot_Mana" Association="Self.FK_Cities_Lishkot_Mana">
+            <End Role="Lishkot_Mana" EntitySet="Lishkot_Mana" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Regional_Councils" Association="Self.FK_Cities_Regional_Councils">
+            <End Role="Regional_Councils" EntitySet="Regional_Councils" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Regions_Cities" Association="Self.FK_City_Regions_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="City_Regions" EntitySet="City_Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Capital_Administrative" Association="Self.FK_Countries_Cities_Capital_Administrative">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Capital_Constitutional" Association="Self.FK_Countries_Cities_Capital_Constitutional">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Capital_Legal" Association="Self.FK_Countries_Cities_Capital_Legal">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Largest_City_Area" Association="Self.FK_Countries_Cities_Largest_City_Area">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Largest_City_Population" Association="Self.FK_Countries_Cities_Largest_City_Population">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Country_Statuses" Association="Self.FK_Countries_Country_Statuses">
+            <End Role="Country_Statuses" EntitySet="Country_Statuses" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Maternal_Country" Association="Self.FK_Countries_Maternal_Country">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Countries1" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_UN_Member_Statuses" Association="Self.FK_Countries_UN_Member_Statuses">
+            <End Role="UN_Member_Statuses" EntitySet="UN_Member_Statuses" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_World_Regions" Association="Self.FK_Countries_World_Regions">
+            <End Role="World_Regions" EntitySet="World_Regions" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_Regions_Countries" Association="Self.FK_Country_Regions_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Country_Regions" EntitySet="Country_Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Streets_Cities" Association="Self.FK_Streets_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Streets" EntitySet="Streets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorldGeoDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="City_Code" />
+          </Key>
+          <Property Name="City_Code" Type="Int32" Nullable="false" />
+          <Property Name="City_Coat_Of_Arms_110px_Link" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="City_Coat_Of_Arms_110px" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="City_Coat_Of_Arms_110px_ext" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Region_Code" Type="Int32" />
+          <Property Name="Lishkat_Mana_Code" Type="Int32" />
+          <Property Name="Regional_Council_Code" Type="Int32" />
+          <Property Name="Country_Code" Type="Int32" />
+          <Property Name="City_Link" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="City_Link_En" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="City_Link_Ru" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="City_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City_Description_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City_Description_Ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City_Latitude" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="City_Longitude" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Cities_Countries" FromRole="Cities" ToRole="Countries" />
+          <NavigationProperty Name="Country_Region" Relationship="Self.FK_Cities_Country_Regions" FromRole="Cities" ToRole="Country_Regions" />
+          <NavigationProperty Name="Lishkat_Mana" Relationship="Self.FK_Cities_Lishkot_Mana" FromRole="Cities" ToRole="Lishkot_Mana" />
+          <NavigationProperty Name="Regional_Council" Relationship="Self.FK_Cities_Regional_Councils" FromRole="Cities" ToRole="Regional_Councils" />
+          <NavigationProperty Name="City_Regions" Relationship="Self.FK_City_Regions_Cities" FromRole="Cities" ToRole="City_Regions" />
+          <NavigationProperty Name="Streets" Relationship="Self.FK_Streets_Cities" FromRole="Cities" ToRole="Streets" />
+        </EntityType>
+        <EntityType Name="City_Region">
+          <Key>
+            <PropertyRef Name="City_Region_Id" />
+          </Key>
+          <Property Name="City_Region_Id" Type="Int32" Nullable="false" />
+          <Property Name="City_Region_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City_Region_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City_Region_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City_Code" Type="Int32" />
+          <Property Name="City_Region_Latitude" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="City_Region_Longitude" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="City" Relationship="Self.FK_City_Regions_Cities" FromRole="City_Regions" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_Code" />
+          </Key>
+          <Property Name="Country_Code" Type="Int32" Nullable="false" />
+          <Property Name="Country_Flag_22px_Link" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Flag_Pic_22px" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Country_Flag_Pic_22px_ext" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Flag_800px_Link" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Flag_Pic_800px" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Country_Flag_Pic_800px_ext" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Coat_Of_Arms_110px_Link" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Coat_Of_Arms_110px" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Country_Coat_Of_Arms_110px_ext" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Full_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Full_Name_En" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Full_Name_Ru" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Name_Source_Language" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Link" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Link_En" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Link_Ru" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Description_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Description_Ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Capital_Constitutional_Id" Type="Int32" />
+          <Property Name="Country_Capital_Administrative_Id" Type="Int32" />
+          <Property Name="Country_Capital_Legal_Id" Type="Int32" />
+          <Property Name="Country_Largest_City_Population_Id" Type="Int32" />
+          <Property Name="Country_Largest_City_Area_Id" Type="Int32" />
+          <Property Name="Country_Population" Type="Int32" />
+          <Property Name="Country_Area" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Country_Density" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Maternal_Country_Id" Type="Int32" />
+          <Property Name="Country_Leader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Leader_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Leader_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Based" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Independence_Day_From" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Independence_Day_From_En" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Independence_Day_From_Ru" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Time_Zone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Web_Extension" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Phone_Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Status_Id" Type="Int32" />
+          <Property Name="UN_Member_Status_Id" Type="Int32" />
+          <Property Name="World_Region_Id" Type="Int32" />
+          <Property Name="Country_Latitude" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Country_Longitude" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Countries" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Capital_City_Administrative" Relationship="Self.FK_Countries_Cities_Capital_Administrative" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Capital_City_Constitutional" Relationship="Self.FK_Countries_Cities_Capital_Constitutional" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Capital_City_Legal" Relationship="Self.FK_Countries_Cities_Capital_Legal" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Largest_City_Area" Relationship="Self.FK_Countries_Cities_Largest_City_Area" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Largest_City_Population" Relationship="Self.FK_Countries_Cities_Largest_City_Population" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Country_Status" Relationship="Self.FK_Countries_Country_Statuses" FromRole="Countries" ToRole="Country_Statuses" />
+          <NavigationProperty Name="Country_States" Relationship="Self.FK_Countries_Maternal_Country" FromRole="Countries" ToRole="Countries1" />
+          <NavigationProperty Name="Maternal_Country" Relationship="Self.FK_Countries_Maternal_Country" FromRole="Countries1" ToRole="Countries" />
+          <NavigationProperty Name="UN_Member_Status" Relationship="Self.FK_Countries_UN_Member_Statuses" FromRole="Countries" ToRole="UN_Member_Statuses" />
+          <NavigationProperty Name="World_Region" Relationship="Self.FK_Countries_World_Regions" FromRole="Countries" ToRole="World_Regions" />
+          <NavigationProperty Name="Country_Regions" Relationship="Self.FK_Country_Regions_Countries" FromRole="Countries" ToRole="Country_Regions" />
+        </EntityType>
+        <EntityType Name="Country_Region">
+          <Key>
+            <PropertyRef Name="Country_Region_Code" />
+          </Key>
+          <Property Name="Country_Region_Code" Type="Int32" Nullable="false" />
+          <Property Name="Country_Region_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Region_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Region_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Code" Type="Int32" />
+          <Property Name="Country_Region_Latitude" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Country_Region_Longitude" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Country_Regions" FromRole="Country_Regions" ToRole="Cities" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Country_Regions_Countries" FromRole="Country_Regions" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="Country_Status">
+          <Key>
+            <PropertyRef Name="Country_Status_Id" />
+          </Key>
+          <Property Name="Country_Status_Id" Type="Int32" Nullable="false" />
+          <Property Name="Country_Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Status_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Status_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Countries_Country_Statuses" FromRole="Country_Statuses" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="Lishkat_Mana">
+          <Key>
+            <PropertyRef Name="Lishkat_Mana_Code" />
+          </Key>
+          <Property Name="Lishkat_Mana_Code" Type="Int32" Nullable="false" />
+          <Property Name="Lishkat_Mana_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lishkat_Mana_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lishkat_Mana_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Lishkot_Mana" FromRole="Lishkot_Mana" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Regional_Council">
+          <Key>
+            <PropertyRef Name="Regional_Council_Code" />
+          </Key>
+          <Property Name="Regional_Council_Code" Type="Int32" Nullable="false" />
+          <Property Name="Regional_Council_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Regional_Council_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Regional_Council_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Regional_Councils" FromRole="Regional_Councils" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="Street_Code" />
+          </Key>
+          <Property Name="Street_Code" Type="Int32" Nullable="false" />
+          <Property Name="Street_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street_Name_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street_Official_Code" Type="Int32" Nullable="false" />
+          <Property Name="City_Code" Type="Int32" Nullable="false" />
+          <Property Name="Street_Latitude" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Street_Longitude" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Streets_Cities" FromRole="Streets" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="UN_Member_Status">
+          <Key>
+            <PropertyRef Name="UN_Member_Status_Id" />
+          </Key>
+          <Property Name="UN_Member_Status_Id" Type="Int32" Nullable="false" />
+          <Property Name="UN_Member_Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UN_Member_Status_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UN_Member_Status_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Countries_UN_Member_Statuses" FromRole="UN_Member_Statuses" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="World_Region">
+          <Key>
+            <PropertyRef Name="World_Region_Id" />
+          </Key>
+          <Property Name="World_Region_Id" Type="Int32" Nullable="false" />
+          <Property Name="World_Region_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Name_Ru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Link" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Link_En" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Link_Ru" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Latitude" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="World_Region_Longitude" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="World_Region_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Description_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="World_Region_Description_Ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Countries_World_Regions" FromRole="World_Regions" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="View_Cities">
+          <Key>
+            <PropertyRef Name="טבלה" />
+            <PropertyRef Name="סמל_ישוב" />
+            <PropertyRef Name="שם_ישוב" />
+          </Key>
+          <Property Name="טבלה" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="סמל_ישוב" Type="Int32" Nullable="false" />
+          <Property Name="שם_ישוב" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="שם_ישוב_לועזי" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="סמל_נפה" Type="Int32" />
+          <Property Name="שם_נפה" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="סמל_לשכת_מנא" Type="Int32" />
+          <Property Name="לשכה" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="סמל_מועצה_איזורית" Type="Int32" />
+          <Property Name="שם_מועצה" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Streets">
+          <Key>
+            <PropertyRef Name="table" />
+            <PropertyRef Name="city_code" />
+            <PropertyRef Name="city_name" />
+            <PropertyRef Name="street_code" />
+            <PropertyRef Name="street_name" />
+          </Key>
+          <Property Name="table" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city_code" Type="Int32" Nullable="false" />
+          <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="street_code" Type="Int32" Nullable="false" />
+          <Property Name="street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Streets_With_Synonyms">
+          <Key>
+            <PropertyRef Name="City_Code" />
+            <PropertyRef Name="City_Name" />
+            <PropertyRef Name="Street_Code" />
+            <PropertyRef Name="Street_Name" />
+            <PropertyRef Name="Street_Name_Status" />
+            <PropertyRef Name="official_code" />
+          </Key>
+          <Property Name="region_code" Type="Int32" />
+          <Property Name="region_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City_Code" Type="Int32" Nullable="false" />
+          <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street_Code" Type="Int32" Nullable="false" />
+          <Property Name="Street_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street_Name_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="official_code" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Country_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Country_Regions">
+          <End Role="Country_Regions" Type="WorldGeoDataModel.Country_Region" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country_Regions">
+              <PropertyRef Name="Country_Region_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Country_Region_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Lishkot_Mana">
+          <End Role="Lishkot_Mana" Type="WorldGeoDataModel.Lishkat_Mana" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lishkot_Mana">
+              <PropertyRef Name="Lishkat_Mana_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Lishkat_Mana_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Regional_Councils">
+          <End Role="Regional_Councils" Type="WorldGeoDataModel.Regional_Council" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional_Councils">
+              <PropertyRef Name="Regional_Council_Code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="Regional_Council_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Regions_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="City_Regions" Type="WorldGeoDataModel.City_Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="City_Regions">
+              <PropertyRef Name="City_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Capital_Administrative">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Capital_Administrative_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Capital_Constitutional">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Capital_Constitutional_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Capital_Legal">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Capital_Legal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Largest_City_Area">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Largest_City_Area_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Cities_Largest_City_Population">
+          <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Largest_City_Population_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Streets_Cities">
+          <End Role="Cities" Type="Self.City" Multiplicity="1" />
+          <End Role="Streets" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="City_Code" />
+            </Principal>
+            <Dependent Role="Streets">
+              <PropertyRef Name="City_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Country_Statuses">
+          <End Role="Country_Statuses" Type="WorldGeoDataModel.Country_Status" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country_Statuses">
+              <PropertyRef Name="Country_Status_Id" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="Country_Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_Maternal_Country">
+          <End Role="Countries" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Countries1" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_Code" />
+            </Principal>
+            <Dependent Role="Countries1">
+              <PropertyRef Name="Maternal_Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_UN_Member_Statuses">
+          <End Role="UN_Member_Statuses" Type="WorldGeoDataModel.UN_Member_Status" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UN_Member_Statuses">
+              <PropertyRef Name="UN_Member_Status_Id" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="UN_Member_Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Countries_World_Regions">
+          <End Role="World_Regions" Type="WorldGeoDataModel.World_Region" Multiplicity="0..1" />
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World_Regions">
+              <PropertyRef Name="World_Region_Id" />
+            </Principal>
+            <Dependent Role="Countries">
+              <PropertyRef Name="World_Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_Regions_Countries">
+          <End Role="Countries" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Country_Regions" Type="WorldGeoDataModel.Country_Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Country_Code" />
+            </Principal>
+            <Dependent Role="Country_Regions">
+              <PropertyRef Name="Country_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorldGeoDataDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="City_Regions" EntityType="WorldGeoDataModel.City_Region" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Country_Regions" EntityType="WorldGeoDataModel.Country_Region" />
+          <EntitySet Name="Country_Statuses" EntityType="WorldGeoDataModel.Country_Status" />
+          <EntitySet Name="Lishkot_Mana" EntityType="WorldGeoDataModel.Lishkat_Mana" />
+          <EntitySet Name="Regional_Councils" EntityType="WorldGeoDataModel.Regional_Council" />
+          <EntitySet Name="Streets" EntityType="Self.Street" />
+          <EntitySet Name="UN_Member_Statuses" EntityType="WorldGeoDataModel.UN_Member_Status" />
+          <EntitySet Name="World_Regions" EntityType="WorldGeoDataModel.World_Region" />
+          <EntitySet Name="View_Cities" EntityType="Self.View_Cities" />
+          <EntitySet Name="View_Streets" EntityType="Self.View_Streets" />
+          <EntitySet Name="View_Streets_With_Synonyms" EntityType="Self.View_Streets_With_Synonyms" />
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Country_Regions" Association="Self.FK_Cities_Country_Regions">
+            <End Role="Country_Regions" EntitySet="Country_Regions" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Lishkot_Mana" Association="Self.FK_Cities_Lishkot_Mana">
+            <End Role="Lishkot_Mana" EntitySet="Lishkot_Mana" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Regional_Councils" Association="Self.FK_Cities_Regional_Councils">
+            <End Role="Regional_Councils" EntitySet="Regional_Councils" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Regions_Cities" Association="Self.FK_City_Regions_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="City_Regions" EntitySet="City_Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Capital_Administrative" Association="Self.FK_Countries_Cities_Capital_Administrative">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Capital_Constitutional" Association="Self.FK_Countries_Cities_Capital_Constitutional">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Capital_Legal" Association="Self.FK_Countries_Cities_Capital_Legal">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Largest_City_Area" Association="Self.FK_Countries_Cities_Largest_City_Area">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Cities_Largest_City_Population" Association="Self.FK_Countries_Cities_Largest_City_Population">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Streets_Cities" Association="Self.FK_Streets_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Streets" EntitySet="Streets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Country_Statuses" Association="Self.FK_Countries_Country_Statuses">
+            <End Role="Country_Statuses" EntitySet="Country_Statuses" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_Maternal_Country" Association="Self.FK_Countries_Maternal_Country">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Countries1" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_UN_Member_Statuses" Association="Self.FK_Countries_UN_Member_Statuses">
+            <End Role="UN_Member_Statuses" EntitySet="UN_Member_Statuses" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Countries_World_Regions" Association="Self.FK_Countries_World_Regions">
+            <End Role="World_Regions" EntitySet="World_Regions" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_Regions_Countries" Association="Self.FK_Country_Regions_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Country_Regions" EntitySet="Country_Regions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorldGeoDataModelStoreContainer" CdmEntityContainer="WorldGeoDataDB">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="City_Code" ColumnName="City_Code" />
+                <ScalarProperty Name="City_Coat_Of_Arms_110px_Link" ColumnName="City_Coat_Of_Arms_110px_Link" />
+                <ScalarProperty Name="City_Coat_Of_Arms_110px" ColumnName="City_Coat_Of_Arms_110px" />
+                <ScalarProperty Name="City_Coat_Of_Arms_110px_ext" ColumnName="City_Coat_Of_Arms_110px_ext" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="City_Name_En" ColumnName="City_Name_En" />
+                <ScalarProperty Name="City_Name_Ru" ColumnName="City_Name_Ru" />
+                <ScalarProperty Name="Country_Region_Code" ColumnName="Country_Region_Code" />
+                <ScalarProperty Name="Lishkat_Mana_Code" ColumnName="Lishkat_Mana_Code" />
+                <ScalarProperty Name="Regional_Council_Code" ColumnName="Regional_Council_Code" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="City_Link" ColumnName="City_Link" />
+                <ScalarProperty Name="City_Link_En" ColumnName="City_Link_En" />
+                <ScalarProperty Name="City_Link_Ru" ColumnName="City_Link_Ru" />
+                <ScalarProperty Name="City_Description" ColumnName="City_Description" />
+                <ScalarProperty Name="City_Description_En" ColumnName="City_Description_En" />
+                <ScalarProperty Name="City_Description_Ru" ColumnName="City_Description_Ru" />
+                <ScalarProperty Name="City_Latitude" ColumnName="City_Latitude" />
+                <ScalarProperty Name="City_Longitude" ColumnName="City_Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City_Regions">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.City_Region">
+              <MappingFragment StoreEntitySet="City_Regions">
+                <ScalarProperty Name="City_Region_Id" ColumnName="City_Region_Id" />
+                <ScalarProperty Name="City_Region_Name" ColumnName="City_Region_Name" />
+                <ScalarProperty Name="City_Region_Name_En" ColumnName="City_Region_Name_En" />
+                <ScalarProperty Name="City_Region_Name_Ru" ColumnName="City_Region_Name_Ru" />
+                <ScalarProperty Name="City_Code" ColumnName="City_Code" />
+                <ScalarProperty Name="City_Region_Latitude" ColumnName="City_Region_Latitude" />
+                <ScalarProperty Name="City_Region_Longitude" ColumnName="City_Region_Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="Country_Flag_22px_Link" ColumnName="Country_Flag_22px_Link" />
+                <ScalarProperty Name="Country_Flag_Pic_22px" ColumnName="Country_Flag_Pic_22px" />
+                <ScalarProperty Name="Country_Flag_Pic_22px_ext" ColumnName="Country_Flag_Pic_22px_ext" />
+                <ScalarProperty Name="Country_Flag_800px_Link" ColumnName="Country_Flag_800px_Link" />
+                <ScalarProperty Name="Country_Flag_Pic_800px" ColumnName="Country_Flag_Pic_800px" />
+                <ScalarProperty Name="Country_Flag_Pic_800px_ext" ColumnName="Country_Flag_Pic_800px_ext" />
+                <ScalarProperty Name="Country_Coat_Of_Arms_110px_Link" ColumnName="Country_Coat_Of_Arms_110px_Link" />
+                <ScalarProperty Name="Country_Coat_Of_Arms_110px" ColumnName="Country_Coat_Of_Arms_110px" />
+                <ScalarProperty Name="Country_Coat_Of_Arms_110px_ext" ColumnName="Country_Coat_Of_Arms_110px_ext" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Country_Name_En" ColumnName="Country_Name_En" />
+                <ScalarProperty Name="Country_Name_Ru" ColumnName="Country_Name_Ru" />
+                <ScalarProperty Name="Country_Full_Name" ColumnName="Country_Full_Name" />
+                <ScalarProperty Name="Country_Full_Name_En" ColumnName="Country_Full_Name_En" />
+                <ScalarProperty Name="Country_Full_Name_Ru" ColumnName="Country_Full_Name_Ru" />
+                <ScalarProperty Name="Country_Name_Source_Language" ColumnName="Country_Name_Source_Language" />
+                <ScalarProperty Name="Country_Link" ColumnName="Country_Link" />
+                <ScalarProperty Name="Country_Link_En" ColumnName="Country_Link_En" />
+                <ScalarProperty Name="Country_Link_Ru" ColumnName="Country_Link_Ru" />
+                <ScalarProperty Name="Country_Description" ColumnName="Country_Description" />
+                <ScalarProperty Name="Country_Description_En" ColumnName="Country_Description_En" />
+                <ScalarProperty Name="Country_Description_Ru" ColumnName="Country_Description_Ru" />
+                <ScalarProperty Name="Country_Capital_Constitutional_Id" ColumnName="Country_Capital_Constitutional_Id" />
+                <ScalarProperty Name="Country_Capital_Administrative_Id" ColumnName="Country_Capital_Administrative_Id" />
+                <ScalarProperty Name="Country_Capital_Legal_Id" ColumnName="Country_Capital_Legal_Id" />
+                <ScalarProperty Name="Country_Largest_City_Population_Id" ColumnName="Country_Largest_City_Population_Id" />
+                <ScalarProperty Name="Country_Largest_City_Area_Id" ColumnName="Country_Largest_City_Area_Id" />
+                <ScalarProperty Name="Country_Population" ColumnName="Country_Population" />
+                <ScalarProperty Name="Country_Area" ColumnName="Country_Area" />
+                <ScalarProperty Name="Country_Density" ColumnName="Country_Density" />
+                <ScalarProperty Name="Maternal_Country_Id" ColumnName="Maternal_Country_Id" />
+                <ScalarProperty Name="Country_Leader" ColumnName="Country_Leader" />
+                <ScalarProperty Name="Country_Leader_En" ColumnName="Country_Leader_En" />
+                <ScalarProperty Name="Country_Leader_Ru" ColumnName="Country_Leader_Ru" />
+                <ScalarProperty Name="Country_Based" ColumnName="Country_Based" />
+                <ScalarProperty Name="Country_Independence_Day_From" ColumnName="Country_Independence_Day_From" />
+                <ScalarProperty Name="Country_Independence_Day_From_En" ColumnName="Country_Independence_Day_From_En" />
+                <ScalarProperty Name="Country_Independence_Day_From_Ru" ColumnName="Country_Independence_Day_From_Ru" />
+                <ScalarProperty Name="Country_Time_Zone" ColumnName="Country_Time_Zone" />
+                <ScalarProperty Name="Country_Web_Extension" ColumnName="Country_Web_Extension" />
+                <ScalarProperty Name="Country_Phone_Prefix" ColumnName="Country_Phone_Prefix" />
+                <ScalarProperty Name="Country_Status_Id" ColumnName="Country_Status_Id" />
+                <ScalarProperty Name="UN_Member_Status_Id" ColumnName="UN_Member_Status_Id" />
+                <ScalarProperty Name="World_Region_Id" ColumnName="World_Region_Id" />
+                <ScalarProperty Name="Country_Latitude" ColumnName="Country_Latitude" />
+                <ScalarProperty Name="Country_Longitude" ColumnName="Country_Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country_Regions">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.Country_Region">
+              <MappingFragment StoreEntitySet="Country_Regions">
+                <ScalarProperty Name="Country_Region_Code" ColumnName="Country_Region_Code" />
+                <ScalarProperty Name="Country_Region_Name" ColumnName="Country_Region_Name" />
+                <ScalarProperty Name="Country_Region_Name_En" ColumnName="Country_Region_Name_En" />
+                <ScalarProperty Name="Country_Region_Name_Ru" ColumnName="Country_Region_Name_Ru" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+                <ScalarProperty Name="Country_Region_Latitude" ColumnName="Country_Region_Latitude" />
+                <ScalarProperty Name="Country_Region_Longitude" ColumnName="Country_Region_Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country_Statuses">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.Country_Status">
+              <MappingFragment StoreEntitySet="Country_Statuses">
+                <ScalarProperty Name="Country_Status_Id" ColumnName="Country_Status_Id" />
+                <ScalarProperty Name="Country_Status_Name" ColumnName="Country_Status_Name" />
+                <ScalarProperty Name="Country_Status_Name_En" ColumnName="Country_Status_Name_En" />
+                <ScalarProperty Name="Country_Status_Name_Ru" ColumnName="Country_Status_Name_Ru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lishkot_Mana">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.Lishkat_Mana">
+              <MappingFragment StoreEntitySet="Lishkot_Mana">
+                <ScalarProperty Name="Lishkat_Mana_Code" ColumnName="Lishkat_Mana_Code" />
+                <ScalarProperty Name="Lishkat_Mana_Name" ColumnName="Lishkat_Mana_Name" />
+                <ScalarProperty Name="Lishkat_Mana_Name_En" ColumnName="Lishkat_Mana_Name_En" />
+                <ScalarProperty Name="Lishkat_Mana_Name_Ru" ColumnName="Lishkat_Mana_Name_Ru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regional_Councils">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.Regional_Council">
+              <MappingFragment StoreEntitySet="Regional_Councils">
+                <ScalarProperty Name="Regional_Council_Code" ColumnName="Regional_Council_Code" />
+                <ScalarProperty Name="Regional_Council_Name" ColumnName="Regional_Council_Name" />
+                <ScalarProperty Name="Regional_Council_Name_En" ColumnName="Regional_Council_Name_En" />
+                <ScalarProperty Name="Regional_Council_Name_Ru" ColumnName="Regional_Council_Name_Ru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Streets">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.Street">
+              <MappingFragment StoreEntitySet="Streets">
+                <ScalarProperty Name="Street_Code" ColumnName="Street_Code" />
+                <ScalarProperty Name="Street_Name" ColumnName="Street_Name" />
+                <ScalarProperty Name="Street_Name_En" ColumnName="Street_Name_En" />
+                <ScalarProperty Name="Street_Name_Ru" ColumnName="Street_Name_Ru" />
+                <ScalarProperty Name="Street_Name_Status" ColumnName="Street_Name_Status" />
+                <ScalarProperty Name="Street_Official_Code" ColumnName="Street_Official_Code" />
+                <ScalarProperty Name="City_Code" ColumnName="City_Code" />
+                <ScalarProperty Name="Street_Latitude" ColumnName="Street_Latitude" />
+                <ScalarProperty Name="Street_Longitude" ColumnName="Street_Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UN_Member_Statuses">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.UN_Member_Status">
+              <MappingFragment StoreEntitySet="UN_Member_Statuses">
+                <ScalarProperty Name="UN_Member_Status_Id" ColumnName="UN_Member_Status_Id" />
+                <ScalarProperty Name="UN_Member_Status_Name" ColumnName="UN_Member_Status_Name" />
+                <ScalarProperty Name="UN_Member_Status_Name_En" ColumnName="UN_Member_Status_Name_En" />
+                <ScalarProperty Name="UN_Member_Status_Name_Ru" ColumnName="UN_Member_Status_Name_Ru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="World_Regions">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.World_Region">
+              <MappingFragment StoreEntitySet="World_Regions">
+                <ScalarProperty Name="World_Region_Id" ColumnName="World_Region_Id" />
+                <ScalarProperty Name="World_Region_Name" ColumnName="World_Region_Name" />
+                <ScalarProperty Name="World_Region_Name_En" ColumnName="World_Region_Name_En" />
+                <ScalarProperty Name="World_Region_Name_Ru" ColumnName="World_Region_Name_Ru" />
+                <ScalarProperty Name="World_Region_Link" ColumnName="World_Region_Link" />
+                <ScalarProperty Name="World_Region_Link_En" ColumnName="World_Region_Link_En" />
+                <ScalarProperty Name="World_Region_Link_Ru" ColumnName="World_Region_Link_Ru" />
+                <ScalarProperty Name="World_Region_Latitude" ColumnName="World_Region_Latitude" />
+                <ScalarProperty Name="World_Region_Longitude" ColumnName="World_Region_Longitude" />
+                <ScalarProperty Name="World_Region_Description" ColumnName="World_Region_Description" />
+                <ScalarProperty Name="World_Region_Description_En" ColumnName="World_Region_Description_En" />
+                <ScalarProperty Name="World_Region_Description_Ru" ColumnName="World_Region_Description_Ru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Cities">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.View_Cities">
+              <MappingFragment StoreEntitySet="View_Cities">
+                <ScalarProperty Name="טבלה" ColumnName="טבלה" />
+                <ScalarProperty Name="סמל_ישוב" ColumnName="סמל_ישוב" />
+                <ScalarProperty Name="שם_ישוב" ColumnName="שם_ישוב" />
+                <ScalarProperty Name="שם_ישוב_לועזי" ColumnName="שם_ישוב_לועזי" />
+                <ScalarProperty Name="סמל_נפה" ColumnName="סמל_נפה" />
+                <ScalarProperty Name="שם_נפה" ColumnName="שם_נפה" />
+                <ScalarProperty Name="סמל_לשכת_מנא" ColumnName="סמל_לשכת_מנא" />
+                <ScalarProperty Name="לשכה" ColumnName="לשכה" />
+                <ScalarProperty Name="סמל_מועצה_איזורית" ColumnName="סמל_מועצה_איזורית" />
+                <ScalarProperty Name="שם_מועצה" ColumnName="שם_מועצה" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Streets">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.View_Streets">
+              <MappingFragment StoreEntitySet="View_Streets">
+                <ScalarProperty Name="table" ColumnName="table" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Streets_With_Synonyms">
+            <EntityTypeMapping TypeName="WorldGeoDataModel.View_Streets_With_Synonyms">
+              <MappingFragment StoreEntitySet="View_Streets_With_Synonyms">
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="City_Code" ColumnName="City_Code" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="Street_Code" ColumnName="Street_Code" />
+                <ScalarProperty Name="Street_Name" ColumnName="Street_Name" />
+                <ScalarProperty Name="Street_Name_Status" ColumnName="Street_Name_Status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

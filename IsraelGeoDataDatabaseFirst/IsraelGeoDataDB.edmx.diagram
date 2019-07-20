@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a32f65b8f9e0451db2707b05ecc57c99" Name="Diagram1" DisplayType="true">
+        <EntityTypeShape EntityType="IsraelGeoDataDBModel.City" Width="2" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IsraelGeoDataDBModel.Lishka" Width="2" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IsraelGeoDataDBModel.Muaca" Width="2" PointX="0.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IsraelGeoDataDBModel.Region" Width="2" PointX="5.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IsraelGeoDataDBModel.Street" Width="2" PointX="5.75" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="IsraelGeoDataDBModel.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" ManuallyRouted="false" />
+        <AssociationConnector Association="IsraelGeoDataDBModel.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" ManuallyRouted="false" />
+        <AssociationConnector Association="IsraelGeoDataDBModel.FK_dbo_Cities_dbo_Regions_region_code" ManuallyRouted="false" />
+        <AssociationConnector Association="IsraelGeoDataDBModel.FK_dbo_Streets_dbo_Cities_city_code" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

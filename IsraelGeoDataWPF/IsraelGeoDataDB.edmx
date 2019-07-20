@@ -1,0 +1,1213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IsraelGeoDataDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="city_code" />
+          </Key>
+          <Property Name="city_code" Type="int" Nullable="false" />
+          <Property Name="city_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city_name_foreign" Type="nvarchar" MaxLength="50" />
+          <Property Name="region_code" Type="int" />
+          <Property Name="lishkat_mana_code" Type="int" />
+          <Property Name="muaca_ezorit_code" Type="int" />
+        </EntityType>
+        <EntityType Name="LishkotMana">
+          <Key>
+            <PropertyRef Name="lishkat_mana_code" />
+          </Key>
+          <Property Name="lishkat_mana_code" Type="int" Nullable="false" />
+          <Property Name="lishka" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Muacot">
+          <Key>
+            <PropertyRef Name="muaca_ezorit_code" />
+          </Key>
+          <Property Name="muaca_ezorit_code" Type="int" Nullable="false" />
+          <Property Name="muaca_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="region_code" />
+          </Key>
+          <Property Name="region_code" Type="int" Nullable="false" />
+          <Property Name="region_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Streets">
+          <Key>
+            <PropertyRef Name="street_code" />
+          </Key>
+          <Property Name="street_code" Type="int" Nullable="false" />
+          <Property Name="street_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="street_name_status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="official_code" Type="int" Nullable="false" />
+          <Property Name="city_code" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\EVGENY\SOURCE\REPOS\EF6\ISRAELGEODATAWPF\ISRAELGEODATA.MDF.dbo.View_Cities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Cities">
+          <Key>
+            <PropertyRef Name="city_code" />
+            <PropertyRef Name="city_name" />
+            <PropertyRef Name="region_name" />
+          </Key>
+          <Property Name="city_code" Type="int" Nullable="false" />
+          <Property Name="city_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city_name_foreign" Type="nvarchar" MaxLength="50" />
+          <Property Name="region_code" Type="int" />
+          <Property Name="region_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lishkat_mana_code" Type="int" />
+          <Property Name="lishka" Type="nvarchar" MaxLength="50" />
+          <Property Name="muaca_ezorit_code" Type="int" />
+          <Property Name="muaca_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\EVGENY\SOURCE\REPOS\EF6\ISRAELGEODATAWPF\ISRAELGEODATA.MDF.dbo.View_City_Names' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_City_Names">
+          <Key>
+            <PropertyRef Name="city_name" />
+          </Key>
+          <Property Name="city_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\EVGENY\SOURCE\REPOS\EF6\ISRAELGEODATAWPF\ISRAELGEODATA.MDF.dbo.View_Street_Names' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Street_Names">
+          <Key>
+            <PropertyRef Name="street_name" />
+          </Key>
+          <Property Name="street_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\EVGENY\SOURCE\REPOS\EF6\ISRAELGEODATAWPF\ISRAELGEODATA.MDF.dbo.View_Streets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Streets">
+          <Key>
+            <PropertyRef Name="street_code" />
+            <PropertyRef Name="street_name" />
+            <PropertyRef Name="street_name_status" />
+            <PropertyRef Name="official_code" />
+            <PropertyRef Name="city_code" />
+            <PropertyRef Name="city_name" />
+            <PropertyRef Name="region_name" />
+          </Key>
+          <Property Name="street_code" Type="int" Nullable="false" />
+          <Property Name="street_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="street_name_status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="official_code" Type="int" Nullable="false" />
+          <Property Name="city_code" Type="int" Nullable="false" />
+          <Property Name="city_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="region_code" Type="int" />
+          <Property Name="region_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+          <End Role="LishkotMana" Type="Self.LishkotMana" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LishkotMana">
+              <PropertyRef Name="lishkat_mana_code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="lishkat_mana_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+          <End Role="Muacot" Type="Self.Muacot" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muacot">
+              <PropertyRef Name="muaca_ezorit_code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="muaca_ezorit_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Cities_dbo_Regions_region_code">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="region_code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="region_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Streets_dbo_Cities_city_code">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Streets" Type="Self.Streets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="city_code" />
+            </Principal>
+            <Dependent Role="Streets">
+              <PropertyRef Name="city_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Get_Cities_By_Lishka_Code" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lishkat_mana_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Lishka_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lishka" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Lishka_Name_Contains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lishka_contains" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Muaca_Code" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="muaca_ezorit_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Muaca_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="muaca_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Muaca_Name_Contains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="muaca_name_contains" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Name_Contains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city_name_contains" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Name_Foreign_Contains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city_name_foreign_contains" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Region_Code" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="region_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Region_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="region_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Cities_By_Region_Name_Contains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="region_name_contains" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_City_By_Code" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_City_By_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_City_By_Name_Foreign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city_name_foreign" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_City_Names" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_City_Names_Foreign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Street_By_Code" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Street_By_Name_And_City_Code" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="city_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Street_By_Name_And_City_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="city_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Street_Names" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Streets_By_Name_Contains_And_City_Code" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street_name_contains" Type="nvarchar" Mode="In" />
+          <Parameter Name="city_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Streets_By_Name_Contains_And_City_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street_name_contains" Type="nvarchar" Mode="In" />
+          <Parameter Name="city_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Streets_By_Name_Contains_And_City_Name_Contains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street_name_contains" Type="nvarchar" Mode="In" />
+          <Parameter Name="city_name_contains" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="INSERT_UPDATE_City" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city_code" Type="int" Mode="In" />
+          <Parameter Name="city_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="city_name_foreign" Type="nvarchar" Mode="In" />
+          <Parameter Name="region_code" Type="int" Mode="In" />
+          <Parameter Name="lishkat_mana_code" Type="int" Mode="In" />
+          <Parameter Name="muaca_ezorit_code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="INSERT_UPDATE_Lishka" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lishkat_mana_code" Type="int" Mode="In" />
+          <Parameter Name="lishka" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="INSERT_UPDATE_Muaca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="muaca_ezorit_code" Type="int" Mode="In" />
+          <Parameter Name="muaca_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="INSERT_UPDATE_Region" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="region_code" Type="int" Mode="In" />
+          <Parameter Name="region_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="INSERT_UPDATE_Street" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street_code" Type="int" Mode="In" />
+          <Parameter Name="street_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="street_name_status" Type="nvarchar" Mode="In" />
+          <Parameter Name="official_code" Type="int" Mode="In" />
+          <Parameter Name="city_code" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="IsraelGeoDataDBStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LishkotMana" EntityType="Self.LishkotMana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Muacot" EntityType="Self.Muacot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Streets" EntityType="Self.Streets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Cities" EntityType="Self.View_Cities" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Cities].[city_code] AS [city_code], 
+    [View_Cities].[city_name] AS [city_name], 
+    [View_Cities].[city_name_foreign] AS [city_name_foreign], 
+    [View_Cities].[region_code] AS [region_code], 
+    [View_Cities].[region_name] AS [region_name], 
+    [View_Cities].[lishkat_mana_code] AS [lishkat_mana_code], 
+    [View_Cities].[lishka] AS [lishka], 
+    [View_Cities].[muaca_ezorit_code] AS [muaca_ezorit_code], 
+    [View_Cities].[muaca_name] AS [muaca_name]
+    FROM [dbo].[View_Cities] AS [View_Cities]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_City_Names" EntityType="Self.View_City_Names" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_City_Names].[city_name] AS [city_name]
+    FROM [dbo].[View_City_Names] AS [View_City_Names]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Street_Names" EntityType="Self.View_Street_Names" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Street_Names].[street_name] AS [street_name]
+    FROM [dbo].[View_Street_Names] AS [View_Street_Names]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Streets" EntityType="Self.View_Streets" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Streets].[street_code] AS [street_code], 
+    [View_Streets].[street_name] AS [street_name], 
+    [View_Streets].[street_name_status] AS [street_name_status], 
+    [View_Streets].[official_code] AS [official_code], 
+    [View_Streets].[city_code] AS [city_code], 
+    [View_Streets].[city_name] AS [city_name], 
+    [View_Streets].[region_code] AS [region_code], 
+    [View_Streets].[region_name] AS [region_name]
+    FROM [dbo].[View_Streets] AS [View_Streets]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" Association="Self.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+            <End Role="LishkotMana" EntitySet="LishkotMana" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" Association="Self.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+            <End Role="Muacot" EntitySet="Muacot" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Cities_dbo_Regions_region_code" Association="Self.FK_dbo_Cities_dbo_Regions_region_code">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Streets_dbo_Cities_city_code" Association="Self.FK_dbo_Streets_dbo_Cities_city_code">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Streets" EntitySet="Streets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IsraelGeoDataDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="city_code" />
+          </Key>
+          <Property Name="city_code" Type="Int32" Nullable="false" />
+          <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city_name_foreign" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="region_code" Type="Int32" />
+          <Property Name="lishkat_mana_code" Type="Int32" />
+          <Property Name="muaca_ezorit_code" Type="Int32" />
+          <NavigationProperty Name="LishkotMana" Relationship="Self.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" FromRole="Cities" ToRole="LishkotMana" />
+          <NavigationProperty Name="Muacot" Relationship="Self.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" FromRole="Cities" ToRole="Muacot" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_dbo_Cities_dbo_Regions_region_code" FromRole="Cities" ToRole="Regions" />
+          <NavigationProperty Name="Streets" Relationship="Self.FK_dbo_Streets_dbo_Cities_city_code" FromRole="Cities" ToRole="Streets" />
+        </EntityType>
+        <EntityType Name="LishkotMana">
+          <Key>
+            <PropertyRef Name="lishkat_mana_code" />
+          </Key>
+          <Property Name="lishkat_mana_code" Type="Int32" Nullable="false" />
+          <Property Name="lishka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" FromRole="LishkotMana" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Muacot">
+          <Key>
+            <PropertyRef Name="muaca_ezorit_code" />
+          </Key>
+          <Property Name="muaca_ezorit_code" Type="Int32" Nullable="false" />
+          <Property Name="muaca_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" FromRole="Muacot" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="region_code" />
+          </Key>
+          <Property Name="region_code" Type="Int32" Nullable="false" />
+          <Property Name="region_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_dbo_Cities_dbo_Regions_region_code" FromRole="Regions" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="street_code" />
+          </Key>
+          <Property Name="street_code" Type="Int32" Nullable="false" />
+          <Property Name="street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="street_name_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="official_code" Type="Int32" Nullable="false" />
+          <Property Name="city_code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_dbo_Streets_dbo_Cities_city_code" FromRole="Streets" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="View_Cities">
+          <Key>
+            <PropertyRef Name="city_code" />
+            <PropertyRef Name="city_name" />
+            <PropertyRef Name="region_name" />
+          </Key>
+          <Property Name="city_code" Type="Int32" Nullable="false" />
+          <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city_name_foreign" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="region_code" Type="Int32" />
+          <Property Name="region_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lishkat_mana_code" Type="Int32" />
+          <Property Name="lishka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="muaca_ezorit_code" Type="Int32" />
+          <Property Name="muaca_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_City_Names">
+          <Key>
+            <PropertyRef Name="city_name" />
+          </Key>
+          <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Street_Names">
+          <Key>
+            <PropertyRef Name="street_name" />
+          </Key>
+          <Property Name="street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Streets">
+          <Key>
+            <PropertyRef Name="street_code" />
+            <PropertyRef Name="street_name" />
+            <PropertyRef Name="street_name_status" />
+            <PropertyRef Name="official_code" />
+            <PropertyRef Name="city_code" />
+            <PropertyRef Name="city_name" />
+            <PropertyRef Name="region_name" />
+          </Key>
+          <Property Name="street_code" Type="Int32" Nullable="false" />
+          <Property Name="street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="street_name_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="official_code" Type="Int32" Nullable="false" />
+          <Property Name="city_code" Type="Int32" Nullable="false" />
+          <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="region_code" Type="Int32" />
+          <Property Name="region_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+          <End Role="LishkotMana" Type="Self.LishkotMana" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LishkotMana">
+              <PropertyRef Name="lishkat_mana_code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="lishkat_mana_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+          <End Role="Muacot" Type="Self.Muacot" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muacot">
+              <PropertyRef Name="muaca_ezorit_code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="muaca_ezorit_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Cities_dbo_Regions_region_code">
+          <End Role="Regions" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="region_code" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="region_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Streets_dbo_Cities_city_code">
+          <End Role="Cities" Type="Self.City" Multiplicity="1" />
+          <End Role="Streets" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="city_code" />
+            </Principal>
+            <Dependent Role="Streets">
+              <PropertyRef Name="city_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IsraelGeoDataCS" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="LishkotManas" EntityType="Self.LishkotMana" />
+          <EntitySet Name="Muacots" EntityType="Self.Muacot" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="Streets" EntityType="Self.Street" />
+          <EntitySet Name="View_Cities" EntityType="Self.View_Cities" />
+          <EntitySet Name="View_City_Names" EntityType="Self.View_City_Names" />
+          <EntitySet Name="View_Street_Names" EntityType="Self.View_Street_Names" />
+          <EntitySet Name="View_Streets" EntityType="Self.View_Streets" />
+          <AssociationSet Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" Association="Self.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+            <End Role="LishkotMana" EntitySet="LishkotManas" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" Association="Self.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+            <End Role="Muacot" EntitySet="Muacots" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Cities_dbo_Regions_region_code" Association="Self.FK_dbo_Cities_dbo_Regions_region_code">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Streets_dbo_Cities_city_code" Association="Self.FK_dbo_Streets_dbo_Cities_city_code">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Streets" EntitySet="Streets" />
+          </AssociationSet>
+          <FunctionImport Name="Get_Cities_By_Lishka_Code" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Lishka_Code_Result)">
+            <Parameter Name="lishkat_mana_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Lishka_Name" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Lishka_Name_Result)">
+            <Parameter Name="lishka" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Lishka_Name_Contains" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Lishka_Name_Contains_Result)">
+            <Parameter Name="lishka_contains" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Muaca_Code" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Muaca_Code_Result)">
+            <Parameter Name="muaca_ezorit_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Muaca_Name" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Muaca_Name_Result)">
+            <Parameter Name="muaca_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Muaca_Name_Contains" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Muaca_Name_Contains_Result)">
+            <Parameter Name="muaca_name_contains" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Name_Contains" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Name_Contains_Result)">
+            <Parameter Name="city_name_contains" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Name_Foreign_Contains" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Name_Foreign_Contains_Result)">
+            <Parameter Name="city_name_foreign_contains" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Region_Code" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Region_Code_Result)">
+            <Parameter Name="region_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Region_Name" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Region_Name_Result)">
+            <Parameter Name="region_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Cities_By_Region_Name_Contains" ReturnType="Collection(IsraelGeoDataDB.Get_Cities_By_Region_Name_Contains_Result)">
+            <Parameter Name="region_name_contains" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_City_By_Code" ReturnType="Collection(IsraelGeoDataDB.Get_City_By_Code_Result)">
+            <Parameter Name="city_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_City_By_Name" ReturnType="Collection(IsraelGeoDataDB.Get_City_By_Name_Result)">
+            <Parameter Name="city_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_City_By_Name_Foreign" ReturnType="Collection(IsraelGeoDataDB.Get_City_By_Name_Foreign_Result)">
+            <Parameter Name="city_name_foreign" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_City_Names" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_City_Names_Foreign" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_Street_By_Code" ReturnType="Collection(IsraelGeoDataDB.Get_Street_By_Code_Result)">
+            <Parameter Name="street_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Street_By_Name_And_City_Code" ReturnType="Collection(IsraelGeoDataDB.Get_Street_By_Name_And_City_Code_Result)">
+            <Parameter Name="street_name" Mode="In" Type="String" />
+            <Parameter Name="city_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Street_By_Name_And_City_Name" ReturnType="Collection(IsraelGeoDataDB.Get_Street_By_Name_And_City_Name_Result)">
+            <Parameter Name="street_name" Mode="In" Type="String" />
+            <Parameter Name="city_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Street_Names" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_Streets_By_Name_Contains_And_City_Code" ReturnType="Collection(IsraelGeoDataDB.Get_Streets_By_Name_Contains_And_City_Code_Result)">
+            <Parameter Name="street_name_contains" Mode="In" Type="String" />
+            <Parameter Name="city_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Streets_By_Name_Contains_And_City_Name" ReturnType="Collection(IsraelGeoDataDB.Get_Streets_By_Name_Contains_And_City_Name_Result)">
+            <Parameter Name="street_name_contains" Mode="In" Type="String" />
+            <Parameter Name="city_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Streets_By_Name_Contains_And_City_Name_Contains" ReturnType="Collection(IsraelGeoDataDB.Get_Streets_By_Name_Contains_And_City_Name_Contains_Result)">
+            <Parameter Name="street_name_contains" Mode="In" Type="String" />
+            <Parameter Name="city_name_contains" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_UPDATE_City">
+            <Parameter Name="city_code" Mode="In" Type="Int32" />
+            <Parameter Name="city_name" Mode="In" Type="String" />
+            <Parameter Name="city_name_foreign" Mode="In" Type="String" />
+            <Parameter Name="region_code" Mode="In" Type="Int32" />
+            <Parameter Name="lishkat_mana_code" Mode="In" Type="Int32" />
+            <Parameter Name="muaca_ezorit_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_UPDATE_Lishka">
+            <Parameter Name="lishkat_mana_code" Mode="In" Type="Int32" />
+            <Parameter Name="lishka" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_UPDATE_Muaca">
+            <Parameter Name="muaca_ezorit_code" Mode="In" Type="Int32" />
+            <Parameter Name="muaca_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_UPDATE_Region">
+            <Parameter Name="region_code" Mode="In" Type="Int32" />
+            <Parameter Name="region_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_UPDATE_Street">
+            <Parameter Name="street_code" Mode="In" Type="Int32" />
+            <Parameter Name="street_name" Mode="In" Type="String" />
+            <Parameter Name="street_name_status" Mode="In" Type="String" />
+            <Parameter Name="official_code" Mode="In" Type="Int32" />
+            <Parameter Name="city_code" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Get_Cities_By_Lishka_Code_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Lishka_Name_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Lishka_Name_Contains_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Muaca_Code_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Muaca_Name_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Muaca_Name_Contains_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Name_Contains_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Name_Foreign_Contains_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Region_Code_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Region_Name_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Cities_By_Region_Name_Contains_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_City_By_Code_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_City_By_Name_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_City_By_Name_Foreign_Result">
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="city_name_foreign" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="lishkat_mana_code" Nullable="true" />
+          <Property Type="String" Name="lishka" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="muaca_ezorit_code" Nullable="true" />
+          <Property Type="String" Name="muaca_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Street_By_Code_Result">
+          <Property Type="Int32" Name="street_code" Nullable="false" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="street_name_status" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="official_code" Nullable="false" />
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Street_By_Name_And_City_Code_Result">
+          <Property Type="Int32" Name="street_code" Nullable="false" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="street_name_status" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="official_code" Nullable="false" />
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Street_By_Name_And_City_Name_Result">
+          <Property Type="Int32" Name="street_code" Nullable="false" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="street_name_status" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="official_code" Nullable="false" />
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Streets_By_Name_Contains_And_City_Code_Result">
+          <Property Type="Int32" Name="street_code" Nullable="false" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="street_name_status" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="official_code" Nullable="false" />
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Streets_By_Name_Contains_And_City_Name_Result">
+          <Property Type="Int32" Name="street_code" Nullable="false" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="street_name_status" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="official_code" Nullable="false" />
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Streets_By_Name_Contains_And_City_Name_Contains_Result">
+          <Property Type="Int32" Name="street_code" Nullable="false" />
+          <Property Type="String" Name="street_name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="street_name_status" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="official_code" Nullable="false" />
+          <Property Type="Int32" Name="city_code" Nullable="false" />
+          <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="region_code" Nullable="true" />
+          <Property Type="String" Name="region_name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IsraelGeoDataDBStoreContainer" CdmEntityContainer="IsraelGeoDataCS">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LishkotManas">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.LishkotMana">
+              <MappingFragment StoreEntitySet="LishkotMana">
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Muacots">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.Muacot">
+              <MappingFragment StoreEntitySet="Muacot">
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.Region">
+              <MappingFragment StoreEntitySet="Regions">
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Streets">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.Street">
+              <MappingFragment StoreEntitySet="Streets">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Cities">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.View_Cities">
+              <MappingFragment StoreEntitySet="View_Cities">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_City_Names">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.View_City_Names">
+              <MappingFragment StoreEntitySet="View_City_Names">
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Street_Names">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.View_Street_Names">
+              <MappingFragment StoreEntitySet="View_Street_Names">
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Streets">
+            <EntityTypeMapping TypeName="IsraelGeoDataDB.View_Streets">
+              <MappingFragment StoreEntitySet="View_Streets">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Lishka_Code" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Lishka_Code">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Lishka_Code_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Lishka_Name" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Lishka_Name">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Lishka_Name_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Lishka_Name_Contains" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Lishka_Name_Contains">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Lishka_Name_Contains_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Muaca_Code" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Muaca_Code">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Muaca_Code_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Muaca_Name" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Muaca_Name">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Muaca_Name_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Muaca_Name_Contains" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Muaca_Name_Contains">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Muaca_Name_Contains_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Name_Contains" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Name_Contains">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Name_Contains_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Name_Foreign_Contains" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Name_Foreign_Contains">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Name_Foreign_Contains_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Region_Code" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Region_Code">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Region_Code_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Region_Name" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Region_Name">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Region_Name_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Cities_By_Region_Name_Contains" FunctionName="IsraelGeoDataDB.Store.Get_Cities_By_Region_Name_Contains">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Cities_By_Region_Name_Contains_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_City_By_Code" FunctionName="IsraelGeoDataDB.Store.Get_City_By_Code">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_City_By_Code_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_City_By_Name" FunctionName="IsraelGeoDataDB.Store.Get_City_By_Name">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_City_By_Name_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_City_By_Name_Foreign" FunctionName="IsraelGeoDataDB.Store.Get_City_By_Name_Foreign">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_City_By_Name_Foreign_Result">
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+                <ScalarProperty Name="lishka" ColumnName="lishka" />
+                <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+                <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_City_Names" FunctionName="IsraelGeoDataDB.Store.Get_City_Names" />
+          <FunctionImportMapping FunctionImportName="Get_City_Names_Foreign" FunctionName="IsraelGeoDataDB.Store.Get_City_Names_Foreign" />
+          <FunctionImportMapping FunctionImportName="Get_Street_By_Code" FunctionName="IsraelGeoDataDB.Store.Get_Street_By_Code">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Street_By_Code_Result">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Street_By_Name_And_City_Code" FunctionName="IsraelGeoDataDB.Store.Get_Street_By_Name_And_City_Code">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Street_By_Name_And_City_Code_Result">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Street_By_Name_And_City_Name" FunctionName="IsraelGeoDataDB.Store.Get_Street_By_Name_And_City_Name">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Street_By_Name_And_City_Name_Result">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Street_Names" FunctionName="IsraelGeoDataDB.Store.Get_Street_Names" />
+          <FunctionImportMapping FunctionImportName="Get_Streets_By_Name_Contains_And_City_Code" FunctionName="IsraelGeoDataDB.Store.Get_Streets_By_Name_Contains_And_City_Code">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Streets_By_Name_Contains_And_City_Code_Result">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Streets_By_Name_Contains_And_City_Name" FunctionName="IsraelGeoDataDB.Store.Get_Streets_By_Name_Contains_And_City_Name">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Streets_By_Name_Contains_And_City_Name_Result">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Streets_By_Name_Contains_And_City_Name_Contains" FunctionName="IsraelGeoDataDB.Store.Get_Streets_By_Name_Contains_And_City_Name_Contains">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IsraelGeoDataDB.Get_Streets_By_Name_Contains_And_City_Name_Contains_Result">
+                <ScalarProperty Name="street_code" ColumnName="street_code" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+                <ScalarProperty Name="official_code" ColumnName="official_code" />
+                <ScalarProperty Name="city_code" ColumnName="city_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="region_code" ColumnName="region_code" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="INSERT_UPDATE_City" FunctionName="IsraelGeoDataDB.Store.INSERT_UPDATE_City" />
+          <FunctionImportMapping FunctionImportName="INSERT_UPDATE_Lishka" FunctionName="IsraelGeoDataDB.Store.INSERT_UPDATE_Lishka" />
+          <FunctionImportMapping FunctionImportName="INSERT_UPDATE_Muaca" FunctionName="IsraelGeoDataDB.Store.INSERT_UPDATE_Muaca" />
+          <FunctionImportMapping FunctionImportName="INSERT_UPDATE_Region" FunctionName="IsraelGeoDataDB.Store.INSERT_UPDATE_Region" />
+          <FunctionImportMapping FunctionImportName="INSERT_UPDATE_Street" FunctionName="IsraelGeoDataDB.Store.INSERT_UPDATE_Street" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

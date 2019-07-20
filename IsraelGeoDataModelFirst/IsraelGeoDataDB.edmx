@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IsraelGeoDataDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="IsraelGeoDataDBStoreContainer">
+    <EntitySet Name="LishkotMana" EntityType="IsraelGeoDataDB.Store.LishkotMana" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Muacot" EntityType="IsraelGeoDataDB.Store.Muacot" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cities" EntityType="IsraelGeoDataDB.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Streets" EntityType="IsraelGeoDataDB.Store.Streets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Regions" EntityType="IsraelGeoDataDB.Store.Regions" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" Association="IsraelGeoDataDB.Store.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+      <End Role="Lishka" EntitySet="LishkotMana" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" Association="IsraelGeoDataDB.Store.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+      <End Role="Muaca" EntitySet="Muacot" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="RegionCity" Association="IsraelGeoDataDB.Store.RegionCity">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="CityStreet" Association="IsraelGeoDataDB.Store.CityStreet">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Street" EntitySet="Streets" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="LishkotMana">
+    <Key>
+      <PropertyRef Name="lishkat_mana_code" />
+    </Key>
+    <Property Name="lishkat_mana_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lishka" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Muacot">
+    <Key>
+      <PropertyRef Name="muaca_ezorit_code" />
+    </Key>
+    <Property Name="muaca_ezorit_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="muaca_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="city_code" />
+    </Key>
+    <Property Name="city_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="city_name_foreign" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="region_code" Type="int" Nullable="true" />
+    <Property Name="lishkat_mana_code" Type="int" Nullable="true" />
+    <Property Name="muaca_ezorit_code" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Streets">
+    <Key>
+      <PropertyRef Name="street_code" />
+    </Key>
+    <Property Name="street_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="street_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="street_name_status" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="official_code" Type="int" Nullable="false" />
+    <Property Name="city_code" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Regions">
+    <Key>
+      <PropertyRef Name="region_code" />
+    </Key>
+    <Property Name="region_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+    <End Role="Lishka" Type="IsraelGeoDataDB.Store.LishkotMana" Multiplicity="0..1" />
+    <End Role="City" Type="IsraelGeoDataDB.Store.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lishka">
+        <PropertyRef Name="lishkat_mana_code" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="lishkat_mana_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+    <End Role="Muaca" Type="IsraelGeoDataDB.Store.Muacot" Multiplicity="0..1" />
+    <End Role="City" Type="IsraelGeoDataDB.Store.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Muaca">
+        <PropertyRef Name="muaca_ezorit_code" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="muaca_ezorit_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RegionCity">
+    <End Role="Region" Type="IsraelGeoDataDB.Store.Regions" Multiplicity="0..1" />
+    <End Role="City" Type="IsraelGeoDataDB.Store.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="region_code" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="region_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityStreet">
+    <End Role="City" Type="IsraelGeoDataDB.Store.Cities" Multiplicity="1" />
+    <End Role="Street" Type="IsraelGeoDataDB.Store.Streets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="city_code" />
+      </Principal>
+      <Dependent Role="Street">
+        <PropertyRef Name="city_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="IsraelGeoDataDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="IsraelGeoDataDBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LishkotMana" EntityType="IsraelGeoDataDB.Lishka" />
+          <EntitySet Name="Muacot" EntityType="IsraelGeoDataDB.Muaca" />
+          <EntitySet Name="Cities" EntityType="IsraelGeoDataDB.City" />
+          <EntitySet Name="Streets" EntityType="IsraelGeoDataDB.Street" />
+          <EntitySet Name="Regions" EntityType="IsraelGeoDataDB.Region" />
+          <AssociationSet Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" Association="IsraelGeoDataDB.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+            <End Role="Lishka" EntitySet="LishkotMana" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" Association="IsraelGeoDataDB.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+            <End Role="Muaca" EntitySet="Muacot" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="RegionCity" Association="IsraelGeoDataDB.RegionCity">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="CityStreet" Association="IsraelGeoDataDB.CityStreet">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Street" EntitySet="Streets" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Lishka">
+          <Key>
+            <PropertyRef Name="lishkat_mana_code" />
+          </Key>
+          <Property Name="lishkat_mana_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lishka" Type="String" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Cities" Relationship="IsraelGeoDataDB.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" FromRole="Lishka" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Muaca">
+          <Key>
+            <PropertyRef Name="muaca_ezorit_code" />
+          </Key>
+          <Property Name="muaca_ezorit_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="muaca_name" Type="String" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Cities" Relationship="IsraelGeoDataDB.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" FromRole="Muaca" ToRole="City" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="city_code" />
+          </Key>
+          <Property Name="city_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city_name" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="city_name_foreign" Type="String" MaxLength="50" />
+          <Property Name="region_code" Type="Int32" />
+          <Property Name="lishkat_mana_code" Type="Int32" />
+          <Property Name="muaca_ezorit_code" Type="Int32" />
+          <NavigationProperty Name="Lishka" Relationship="IsraelGeoDataDB.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" FromRole="City" ToRole="Lishka" />
+          <NavigationProperty Name="Muaca" Relationship="IsraelGeoDataDB.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" FromRole="City" ToRole="Muaca" />
+          <NavigationProperty Name="Region" Relationship="IsraelGeoDataDB.RegionCity" FromRole="City" ToRole="Region" />
+          <NavigationProperty Name="Streets" Relationship="IsraelGeoDataDB.CityStreet" FromRole="City" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="street_code" />
+          </Key>
+          <Property Name="street_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="street_name" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="street_name_status" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="official_code" Type="Int32" Nullable="false" />
+          <Property Name="city_code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="IsraelGeoDataDB.CityStreet" FromRole="Street" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="region_code" />
+          </Key>
+          <Property Name="region_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="region_name" Type="String" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Cities" Relationship="IsraelGeoDataDB.RegionCity" FromRole="Region" ToRole="City" />
+        </EntityType>
+        <Association Name="FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code">
+          <End Type="IsraelGeoDataDB.Lishka" Role="Lishka" Multiplicity="0..1" />
+          <End Type="IsraelGeoDataDB.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lishka">
+              <PropertyRef Name="lishkat_mana_code" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="lishkat_mana_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code">
+          <End Type="IsraelGeoDataDB.Muaca" Role="Muaca" Multiplicity="0..1" />
+          <End Type="IsraelGeoDataDB.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muaca">
+              <PropertyRef Name="muaca_ezorit_code" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="muaca_ezorit_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegionCity">
+          <End Type="IsraelGeoDataDB.Region" Role="Region" Multiplicity="0..1" />
+          <End Type="IsraelGeoDataDB.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="region_code" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="region_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CityStreet">
+          <End Type="IsraelGeoDataDB.City" Role="City" Multiplicity="1" />
+          <End Type="IsraelGeoDataDB.Street" Role="Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="city_code" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="city_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IsraelGeoDataDBStoreContainer" CdmEntityContainer="IsraelGeoDataDBContainer">
+    <EntitySetMapping Name="LishkotMana">
+      <EntityTypeMapping TypeName="IsTypeOf(IsraelGeoDataDB.Lishka)">
+        <MappingFragment StoreEntitySet="LishkotMana">
+          <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+          <ScalarProperty Name="lishka" ColumnName="lishka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Muacot">
+      <EntityTypeMapping TypeName="IsTypeOf(IsraelGeoDataDB.Muaca)">
+        <MappingFragment StoreEntitySet="Muacot">
+          <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+          <ScalarProperty Name="muaca_name" ColumnName="muaca_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="IsTypeOf(IsraelGeoDataDB.City)">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="city_code" ColumnName="city_code" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+          <ScalarProperty Name="city_name_foreign" ColumnName="city_name_foreign" />
+          <ScalarProperty Name="region_code" ColumnName="region_code" />
+          <ScalarProperty Name="lishkat_mana_code" ColumnName="lishkat_mana_code" />
+          <ScalarProperty Name="muaca_ezorit_code" ColumnName="muaca_ezorit_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Streets">
+      <EntityTypeMapping TypeName="IsTypeOf(IsraelGeoDataDB.Street)">
+        <MappingFragment StoreEntitySet="Streets">
+          <ScalarProperty Name="street_code" ColumnName="street_code" />
+          <ScalarProperty Name="street_name" ColumnName="street_name" />
+          <ScalarProperty Name="street_name_status" ColumnName="street_name_status" />
+          <ScalarProperty Name="official_code" ColumnName="official_code" />
+          <ScalarProperty Name="city_code" ColumnName="city_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="IsTypeOf(IsraelGeoDataDB.Region)">
+        <MappingFragment StoreEntitySet="Regions">
+          <ScalarProperty Name="region_code" ColumnName="region_code" />
+          <ScalarProperty Name="region_name" ColumnName="region_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

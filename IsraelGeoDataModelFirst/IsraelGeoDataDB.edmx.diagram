@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9aefc98ed9c84c75ae51d953644e7079" Name="Diagram1" DisplayType="true" >
+        <EntityTypeShape EntityType="IsraelGeoDataDB.Lishka" Width="2" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="IsraelGeoDataDB.Muaca" Width="2" PointX="0.5" PointY="2.25" />
+        <EntityTypeShape EntityType="IsraelGeoDataDB.City" Width="2" PointX="3.125" PointY="0.5" />
+        <EntityTypeShape EntityType="IsraelGeoDataDB.Street" Width="2" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="IsraelGeoDataDB.Region" Width="2" PointX="5.75" PointY="2.75" />
+        <AssociationConnector Association="IsraelGeoDataDB.FK_dbo_Cities_dbo_LishkotMana_lishkat_mana_code" />
+        <AssociationConnector Association="IsraelGeoDataDB.FK_dbo_Cities_dbo_Muacot_muaca_ezorit_code" />
+        <AssociationConnector Association="IsraelGeoDataDB.RegionCity" />
+        <AssociationConnector Association="IsraelGeoDataDB.CityStreet" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
